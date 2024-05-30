@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation Date Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <img src="caseys-logo.jpg" alt="Company Logo" class="logo">
+    <h1>Installation Date Calculator</h1>
+    <form id="dateForm">
+      <div class="form-group">
+        <label for="awardedDate">Awarded Date:</label>
+        <input type="date" id="awardedDate" name="awardedDate" required>
+      </div>
+      <div class="form-group">
+        <label for="measureDate">Measure Date:</label>
+        <input type="date" id="measureDate" name="measureDate" required>
+      </div>
+      <div class="form-group">
+        <label for="projectType">Project Type:</label>
+        <select id="projectType" name="projectType" required>
+          <option value="new_construction_builder">New Construction - Builder</option>
+          <option value="renovation_contractor">Renovation - Contractor</option>
+          <option value="supply_only">Supply Only</option>
+          <option value="new_construction_retail">New Construction - Retail</option>
+          <option value="renovation_retail">Renovation - Retail</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="projectValue">Project Value:</label>
+        <input type="number" id="projectValue" name="projectValue" required oninput="updateLeadTime()">
+      </div>
+      <div class="form-group">
+        <label for="specialConditions">Special Conditions:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="glazeFinish" name="specialConditions" value="glaze_finish" onclick="updateLeadTime()"> Glaze Finish (+7 days)</label>
+          <label><input type="checkbox" id="specialOrderMaterials" name="specialConditions" value="special_order_materials" onclick="updateLeadTime()"> Special Order Materials (+14 days)</label>
+          <label><input type="checkbox" id="reededPanels" name="specialConditions" value="reeded_panels" onclick="updateLeadTime()"> Reeded Panels (+7 days)</label>
+          <label><input type="checkbox" id="curvedHoods" name="specialConditions" value="curved_hoods" onclick="updateLeadTime()"> Curved Hoods (+14 days)</label>
+          <label><input type="checkbox" id="craftsmanCabinetry" name="specialConditions" value="craftsman_cabinetry" onclick="updateLeadTime()"> Craftsman Cabinetry (+14 days)</label>
+        </div>
+      </div>
+      <button id="calculateBtn" type="button" onclick="calculateInstallDate()">Calculate Install Date</button>
+    </form>
+    <p id="leadTimeEstimate"></p>
+    <p id="managerApprovalNote" class="note"></p>
+    <p id="result"></p>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
